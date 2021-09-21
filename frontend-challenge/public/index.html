@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+    <title>Penn Course Cart</title>
+    <link rel="stylesheet" href="../src/index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=EB+Garamond&family=Encode+Sans+SC:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js"></script>
+    <script src="../src/index.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!---------- SELF MADE NAV BAR  ---------->
+    <br><br>
+    <div class="nav-bar">
+        <ul>
+            <li id="title"><i>PENN COURSE CART</i></a>
+            </li>
+
+            <li class="text" style="float:right"><a target="_blank" href="https://pennlabs.org/">Home</a></li>
+            <!-- <li class="text" style="float:right"><a class="active" href="/smart">Goals</a></li>
+            <li class="text" style="float:right"><a href="info.html">Information</a></li>
+            <li class="text" style="float:right"><a href="timeline.html">Timeline</a></li> -->
+            <li style="float:right">
+                <a target="_blank" href="https://catalog.upenn.edu/courses/"><img id="pfp" src="https://branding.web-resources.upenn.edu/sites/default/files/UniversityofPennsylvania_Shield_RGB.png"></a>
+            </li>
+        </ul>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!---------- ACTION CARDS WITH ANIMATIONS ---------->
+
+    <main class="page-content">
+        <div class="card" id="card11">
+            <div class="content">
+                <h2 class="title">Course Catalog</h2>
+                <p class="copy">Browse Penn Courses!</p>
+                <button class="modal-button" href="#myModal2">enter</button>
+            </div>
+        </div>
+        <div class="card" id="card22">
+            <div class="content">
+                <h2 class="title">My Cart</h2>
+                <p class="copy">Review course selections here!</p>
+                <button class="modal-button" href="#myModal3">enter</button>
+            </div>
+        </div>
+    </main>
+
+    <!------------- MODALS & MODAL CONTENT ------------>
+
+    <!-- MODAL 1 -->
+    <!-- Trigger/Open The Modal -->
+    <!-- The Modal -->
+    <div id="myModal2" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">×</span>
+                <h2>Course Catalog</h2>
+            </div>
+            <div class="modal-body">
+
+                <!-- INSERT COURSE CATALOG FROM JSON FILE HERE  -->
+
+                <div id="myData"></div>
+                <div class="modal-footer">
+                    <input type="submit" class="yellowing" value="Save Changes" />
+
+                    <!-- SAVE CHANGES BUTTON ALLOWS THE COURSES ADDED TO CART TO BE SAVED ONTO THE NEXT MODAL -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2 -->
+    <!-- Trigger/Open The Modal -->
+    <!-- The Modal -->
+    <div id="myModal3" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">×</span>
+                <h2>My Cart</h2>
+
+                <input class="yellowing" type="submit" value="Refresh " />
+
+            </div>
+            <div class="modal-body">
+
+                <!-- INSERT SELECTED COURSES HERE -->
+
+
+                <div class="modal-footer">
+                    <h3> Congrats on your course selection!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+
+    <!-- JAVASCRIPT FOR MODAL ANIMATION  -->
+    <script>
+        // Get the button that opens the modal
+        var btn = document.querySelectorAll("button.modal-button");
+
+        // All page modals
+        var modals = document.querySelectorAll('.modal');
+        // Get the <span> element that closes the modal
+        var spans = document.getElementsByClassName("close");
+        // When the user clicks the button, open the modal
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].onclick = function(e) {
+                e.preventDefault();
+                modal = document.querySelector(e.target.getAttribute("href"));
+                modal.style.display = "block";
+            }
+        }
+        // When the user clicks on <span> (x), close the modal
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].onclick = function() {
+                for (var index in modals) {
+                    if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>
